@@ -21,7 +21,7 @@ export const DUMMY_EXPENSES = [
         id: 'e5',
         description: 'watch',
         amount: 89.99,
-        date: new Date('2022-08-06')
+        date: new Date('2022-06-30')
     },
     {
         id: 'e6',
@@ -33,7 +33,7 @@ export const DUMMY_EXPENSES = [
         id: 'e7',
         description: 'Sony headphone',
         amount: 199.99,
-        date: new Date('2022-05-13')
+        date: new Date('2022-05-29')
     },
     {
         id: 'e8',
@@ -56,7 +56,7 @@ export const DUMMY_EXPENSES = [
         id: 'e11',
         description: 'Sony headphone',
         amount: 199.99,
-        date: new Date('2022-05-13')
+        date: new Date('2022-05-28')
     },
     {
         id: 'e12',

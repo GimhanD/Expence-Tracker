@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { useLayoutEffect } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import Button from "../components/UI/Button";
@@ -5,6 +6,7 @@ import IconButton from "../components/UI/IconButton";
 //import { useDispatch } from "react-redux";
 
 import { GlobalStyles } from "../constants/styles";
+import { ExpensesContext } from "../store/expenses-context";
 //import { expenseActions } from "../components/store/ExpenseSlice";
 
 function ManageExpense({ route, navigation }) {
@@ -12,21 +14,33 @@ function ManageExpense({ route, navigation }) {
   const isEditing = !!editedExpenseId;
   //const dispatch = useDispatch();
 
+  const expensesCtx = useContext(ExpensesContext);
 
   function expenseDeleteHandler() {
     //dispatch(expenseActions.deleteExpense(editedExpenseId))
+    expensesCtx.deleteExpense(editedExpenseId);
+
     navigation.goBack();
   }
 
   function expenseCancelHandler() {
-      navigation.goBack();
-  }
-
-  function expenseAddHandler() {
     navigation.goBack();
   }
 
-  function expenseUpdateHandler( ) {
+  function expenseConfirmHandler() {
+    if (isEditing) {
+      expensesCtx.updateExpense(editedExpenseId, {
+        description: "testjdfhdj",
+        amount: 27.0,
+        date: new Date("2022-05-29"),
+      });
+    } else {
+      expensesCtx.addExpense({
+        description: "newwwwwsda",
+        amount: 10.0,
+        date: new Date("2022-08-19"),
+      });
+    }
     navigation.goBack();
   }
 
@@ -41,8 +55,17 @@ function ManageExpense({ route, navigation }) {
       {isEditing && (
         <View>
           <View style={styles.buttonsContainer}>
-            <Button title={"cancel"} mode={"flat"} style={styles.button} onPress={expenseCancelHandler} />
-            <Button title={"Update"} style={styles.button} onPress={expenseUpdateHandler}/>
+            <Button
+              title={"cancel"}
+              mode={"flat"}
+              style={styles.button}
+              onPress={expenseCancelHandler}
+            />
+            <Button
+              title={"Update"}
+              style={styles.button}
+              onPress={expenseConfirmHandler}
+            />
           </View>
           <View style={styles.buttonContainer}>
             <IconButton
@@ -56,8 +79,17 @@ function ManageExpense({ route, navigation }) {
       )}
       {!isEditing && (
         <View style={styles.buttonsContainer}>
-          <Button title={"cancel"} mode={"flat"} style={styles.button} onPress={expenseCancelHandler} />
-          <Button title={"Add"} style={styles.button}  onPress={expenseAddHandler}/>
+          <Button
+            title={"cancel"}
+            mode={"flat"}
+            style={styles.button}
+            onPress={expenseCancelHandler}
+          />
+          <Button
+            title={"Add"}
+            style={styles.button}
+            onPress={expenseConfirmHandler}
+          />
         </View>
       )}
     </View>

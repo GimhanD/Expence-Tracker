@@ -8,7 +8,7 @@ const ExpenseSlice = createSlice({
     reducers: {
         deleteExpense(state, actions) {
             const id = actions.payload;
-            state.DUMMY_EXPENSES = state.DUMMY_EXPENSES.filter(item => item.id !== id);
+            return state.DUMMY_EXPENSES.filter(item => item.id !== id);
         },
         UpdateExpense() {
 
