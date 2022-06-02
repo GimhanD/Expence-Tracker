@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLayoutEffect } from "react";
 import { View, StyleSheet, Text } from "react-native";
+import ExpenseForm from "../components/ManageExpense/ExpenseForm";
 import Button from "../components/UI/Button";
 import IconButton from "../components/UI/IconButton";
 //import { useDispatch } from "react-redux";
@@ -78,18 +79,21 @@ function ManageExpense({ route, navigation }) {
         </View>
       )}
       {!isEditing && (
-        <View style={styles.buttonsContainer}>
-          <Button
-            title={"cancel"}
-            mode={"flat"}
-            style={styles.button}
-            onPress={expenseCancelHandler}
-          />
-          <Button
-            title={"Add"}
-            style={styles.button}
-            onPress={expenseConfirmHandler}
-          />
+        <View>
+          <ExpenseForm />
+          <View style={styles.buttonsContainer}>
+            <Button
+              title={"cancel"}
+              mode={"flat"}
+              style={styles.button}
+              onPress={expenseCancelHandler}
+            />
+            <Button
+              title={"Add"}
+              style={styles.button}
+              onPress={expenseConfirmHandler}
+            />
+          </View>
         </View>
       )}
     </View>

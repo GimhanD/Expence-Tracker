@@ -15,7 +15,7 @@ function RecentExpenses() {
   //this recent expense logic is not working properly. therefore we have to fix that
 
   return (
-    <ExpensesOutput expenses={recentExpenses} expensesPeriod={"Last 7 days"} />
+    <ExpensesOutput expenses={recentExpenses} expensesPeriod={"Last 7 days"} fallBackText={'No any Expenses fund in 7 Days!'} />
   );
 }
 
